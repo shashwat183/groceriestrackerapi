@@ -1,0 +1,8 @@
+{
+    "host": "localhost",
+    "Port": 5432,
+    "user": "shashwatpragya",
+    "dbname": "postgres",
+    "sslmode": "disable",
+    "password": ""
+}
