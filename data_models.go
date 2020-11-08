@@ -28,7 +28,7 @@ type successMessage struct {
 	Message string `json:"message"`
 }
 
-type Configuration struct {
+type configuration struct {
 	Host     string
 	Port     int
 	User     string
@@ -53,13 +53,13 @@ func initialisedb() {
 			Price: 1.50,
 		},
 	}
-	configuration := Configuration{}
-	err := gonfig.GetConf("config/config.development.json", &configuration)
+	config := configuration{}
+	err := gonfig.GetConf("config/config.development.json", &config)
 	if err != nil {
 		panic("Couldnt load config file")
 	}
 	db, dbErr = gorm.Open(postgres.Open(fmt.Sprintf("host=%v port=%v user=%v dbname=%v sslmode=%v password=%v",
-		configuration.Host, configuration.Port, configuration.User, configuration.DBname, configuration.SSLmode, configuration.Password)),
+		config.Host, config.Port, config.User, config.DBname, config.SSLmode, config.Password)),
 		&gorm.Config{Logger: logger.Default.LogMode(logger.Silent)})
 	if dbErr != nil {
 
